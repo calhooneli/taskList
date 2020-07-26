@@ -2,13 +2,25 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  color: #EFDAB9;
+  background-color: #353334;
+}
+input {
+  margin: 0px;
+  border: 0px;
+  border: 1px;
+  border-style: solid;
+  border-color: #424143;
+  border-radius: 2px;
+  color: #EFDAB9;
+  padding: 5px 10px 5px 10px;
 }
 .inputs {
   position: relative;
-  background-color: #444;
+  background-color: #353334;
   padding: 20px;
   height: 100%;
-  width: 15%;
+  width: 19%;
   margin: 0px;
   border: 0px;
   align-items: center;
@@ -19,18 +31,19 @@
   width: 100%;
   padding-top: 10px;
   padding-bottom: 5px;
-  color: white;
+  color: #EFDAB9;
   font-size: 1.5em;
 }
 .inputItem {
   float:left;
   padding: 10px;
   width: 100%;
-  background: #f1f1f1;
+  background: #353334;
   border: 1px;
   border-style: solid;
-  border-color: #999;
+  border-color: #424143;
   border-radius: 2px;
+  color: #EFDAB9;
 }
 #doDate {
   padding: 7.5px;
@@ -38,11 +51,11 @@
 .Button {
   padding: 10px;
   width: 100%;
-  background: #1167b1;
+  background: #5D887B;
   border: 1px;
   border-style: solid;
-  border-color: #2a9df4;
-  border-radius: 2px;
+  border-color: #78AF9F;
+  border-radius: 4px;
   color: white;
   margin-top: 20px;
 }
@@ -50,13 +63,16 @@
   margin: 0;
   float: left;
   padding: 20px;
-  width: 80%;
-  border-style: solid;
+  width: 75%;
+  border-style: none;
   border-color: #999;
-  background-color: #f1f1f1;
+  background-color: #353334;
   height: 100%;
 }
 .actions {
   position: absolute;
   bottom: 50px;
+}
+img {
+  float: right;
 }
