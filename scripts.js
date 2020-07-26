@@ -1,8 +1,9 @@
 // load datatables
 $(document).ready( function () {
-    $('#table').DataTable();
+    $('#table').DataTable({
+      paging: false
+    });
 } );
-
 
 
 
@@ -16,7 +17,7 @@ function constructTable(selector) {
 
     // Traversing the JSON data
     for (var i = 0; i < list.length; i++) {
-        var row = $('<tr/>');
+        var row = $('<tr></tr>');
         for (var colIndex = 0; colIndex < cols.length; colIndex++)
         {
             var val = list[i][cols[colIndex]];
@@ -55,6 +56,14 @@ function Headers(list, selector) {
 }
 
 
+function deleteRow(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+
 
 // delete rows
 $(document).ready(function() {
@@ -71,10 +80,10 @@ $(document).ready(function() {
     } );
 
     $('#delete').click( function () {
-        table.row('.selected').remove().draw( false );
+       table.row('.selected').remove().draw( false );
+
     } );
 } );
-
 
 
 
@@ -92,6 +101,7 @@ function add() {
   var cell2 = newRow.insertCell(2);
   var cell3 = newRow.insertCell(3);
   var cell4 = newRow.insertCell(4);
+  var cell5 = newRow.insertCell(5);
 
   // gather input values
   var taskInput = document.getElementById('task').value
@@ -99,6 +109,7 @@ function add() {
   var doDateInput = document.getElementById('doDate').value
   var priorityInput = document.getElementById('priority').value
   var notesInput = document.getElementById('notes').value
+  
 
   // Append a text node to the cell
   var cell0Text  = document.createTextNode(taskInput)
@@ -111,6 +122,12 @@ function add() {
   cell3.appendChild(cell3Text);
   var cell4Text  = document.createTextNode(notesInput)
   cell4.appendChild(cell4Text);
+
+  var b = document.createElement('button')
+  b.className = 'button'
+  b.id = 'delete'
+  b.innerHTML = 'Complete'
+  cell5.appendChild(b);
 
   $('#task').val('');
   $('#status').val('Do');
