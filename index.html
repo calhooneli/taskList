@@ -1,0 +1,60 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="scripts.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body onload="constructTable('#table')">
+
+<div class="inputs">
+    <label for="task" class="inputLabel">Task</label>
+      <input type="text" class="inputItem" name="task" id="task">
+    <label for="status" class="inputLabel">Status</label>
+      <select id="status" name="status" class="inputItem">
+        <option value="Do">Do</option>
+        <option value="Follow Up">Follow Up</option>
+      </select>
+    <label for="doDate" class="inputLabel">Do Date</label>
+      <input type="date" name="doDate" id="doDate" class="inputItem">
+    <label for="priority" class="inputLabel">Priority</label>
+      <select id="priority" name="priority" class="inputItem">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    <label for="notes" class="inputLabel">Notes</label>
+      <input type="text" name="notes" id="notes" class="inputItem">
+    <button type="button" onclick="add()" class="Button" name="button">Add</button>
+
+    <div class="actions">
+      <button type="button" onclick="stringy()" class="Button" name="button">Save</button>
+      <button type="button" class="Button" id='delete' name="button">Delete Selected Row</button>
+    </div>
+
+</div>
+
+<div class="table">
+  <table id="table" class="display">
+  <thead>
+        <tr>
+            <th>Task</th>
+            <th>Type</th>
+            <th>Do Date</th>
+            <th>Priority</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</div>
+
+
+
+</body>

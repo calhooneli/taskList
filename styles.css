@@ -1,0 +1,62 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.inputs {
+  position: relative;
+  background-color: #444;
+  padding: 20px;
+  height: 100%;
+  width: 15%;
+  margin: 0px;
+  border: 0px;
+  align-items: center;
+  float: left;
+}
+.inputLabel {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: white;
+  font-size: 1.5em;
+}
+.inputItem {
+  float:left;
+  padding: 10px;
+  width: 100%;
+  background: #f1f1f1;
+  border: 1px;
+  border-style: solid;
+  border-color: #999;
+  border-radius: 2px;
+}
+#doDate {
+  padding: 7.5px;
+}
+.Button {
+  padding: 10px;
+  width: 100%;
+  background: #1167b1;
+  border: 1px;
+  border-style: solid;
+  border-color: #2a9df4;
+  border-radius: 2px;
+  color: white;
+  margin-top: 20px;
+}
+.table {
+  margin: 0;
+  float: left;
+  padding: 20px;
+  width: 80%;
+  border-style: solid;
+  border-color: #999;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+.actions {
+  position: absolute;
+  bottom: 50px;
+}
