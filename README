@@ -1,0 +1,1 @@
+This is a single page Task List application which stores your list to local browser storage and will retrieve it upon page load. You can both add and delete items from your list.
