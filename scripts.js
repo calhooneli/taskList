@@ -27,10 +27,12 @@ function constructTable(selector) {
             if (val == null) val = "";
   //              row.append($('<td/>').html(val));
                 row.append('<td>' + val + '</td>');
+
         }
 
         // Adding each row to the table
         $(selector).append(row);
+
     }
 }
 function Headers(list, selector) {
@@ -65,25 +67,147 @@ function deleteRow(btndel) {
 }
 
 
+
+
 // delete rows
 $(document).ready(function() {
     var table = $('#table').DataTable();
 
-    $('#table tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
-
-    $('#delete').click( function () {
-       table.row('.selected').remove().draw( false );
-
+    $('#table tbody').on( 'click', '#delete', function () {
+      $(this).closest('tr').remove();
+      // autosave data after editing
+        stringy()
     } );
 } );
+
+
+
+
+
+// edit cell
+$(document).ready(function() {
+    var table = $('#table').DataTable();
+
+    $('#table tbody').on( 'dblclick', 'td', function () {
+
+        // If it is the type field, build type selector
+        if ($(this)[0].cellIndex === 1) {
+
+          // create select
+          var e = document.createElement('select')
+          e.className = 'inputItem'
+          e.id = 'editInput'
+
+          // add options to select
+          var opt1 = document.createElement('option');
+          var opt2 = document.createElement('option');
+          opt1.text = 'Do';
+          opt2.text = 'Follow up';
+          e.add(opt1);
+          e.add(opt2);
+
+          // set input field up to save to cell on click-away(blur) or key Enter
+          e.addEventListener("keypress", function(e){
+          if (e.key === 'Enter') {
+          $(this).closest('td')[0].innerHTML = $(this)[0].value
+          // autosave data after editing
+            stringy()
+          }
+          });
+          e.addEventListener("blur", function(){
+          $(this).closest('td')[0].innerHTML = $(this)[0].value
+          // autosave data after editing
+            stringy()
+          });
+
+          // populate input field with cell value.
+          e.value = $(this)[0].innerHTML
+          // Clear cell so it does not also appear.
+          $(this)[0].innerHTML = ''
+          // add input field to cell
+          $(this)[0].appendChild(e);
+          // move cursor to input field
+          $('#editInput').focus();
+
+          // If it is the priority field, build priority selector
+        } else if ($(this)[0].cellIndex === 3) {
+
+          // create select
+          var e = document.createElement('select')
+          e.className = 'inputItem'
+          e.id = 'editInput'
+
+          // add options to select
+          var opt1 = document.createElement('option');
+          var opt2 = document.createElement('option');
+          var opt3 = document.createElement('option');
+          opt1.text = 'Low';
+          opt2.text = 'Medium';
+          opt3.text = 'High';
+          e.add(opt1);
+          e.add(opt2);
+          e.add(opt3);
+
+          // set input field up to save to cell on click-away(blur) or key Enter
+          e.addEventListener("keypress", function(e){
+          if (e.key === 'Enter') {
+          $(this).closest('td')[0].innerHTML = $(this)[0].value
+          // autosave data after editing
+            stringy()
+          }
+          });
+          e.addEventListener("blur", function(){
+          $(this).closest('td')[0].innerHTML = $(this)[0].value
+          // autosave data after editing
+            stringy()
+          });
+
+          // populate input field with cell value.
+          e.value = $(this)[0].innerHTML
+          // Clear cell so it does not also appear.
+          $(this)[0].innerHTML = ''
+          // add input field to cell
+          $(this)[0].appendChild(e);
+          // move cursor to input field
+          $('#editInput').focus();
+
+          // any other field, create an input
+        } else {
+        // create input
+        var e = document.createElement('input')
+        e.className = 'inputItem'
+        e.id = 'editInput'
+
+        // Make the input a date picker if Do Date field
+        if ($(this)[0].cellIndex === 2) {
+          e.type = 'date'
+        }
+
+        // set input field up to save to cell on click-away(blur) or key Enter
+        e.addEventListener("keypress", function(e){
+        if (e.key === 'Enter') {
+        $(this).closest('td')[0].innerHTML = $(this)[0].value
+        // autosave data after editing
+          stringy()
+        }
+        });
+        e.addEventListener("blur", function(){
+        $(this).closest('td')[0].innerHTML = $(this)[0].value
+        // autosave data after editing
+          stringy()
+        });
+
+        // populate input field with cell value.
+        e.value = $(this)[0].innerHTML
+        // Clear cell so it does not also appear.
+        $(this)[0].innerHTML = ''
+        // add input field to cell
+        $(this)[0].appendChild(e);
+        // move cursor to input field
+        $('#editInput').focus();
+  }   } );
+} );
+
 
 
 
@@ -109,7 +233,7 @@ function add() {
   var doDateInput = document.getElementById('doDate').value
   var priorityInput = document.getElementById('priority').value
   var notesInput = document.getElementById('notes').value
-  
+
 
   // Append a text node to the cell
   var cell0Text  = document.createTextNode(taskInput)
@@ -135,6 +259,9 @@ function add() {
   $('#priority').val('Low');
   $('#notes').val('');
 
+  // autosave data after adding the row
+  stringy()
+
 }
 
 
@@ -157,5 +284,8 @@ function stringy() {
   myObj = myRows;
 
   window.localStorage.setItem('taskList', JSON.stringify(myObj));
+
+  // reload table so that filters work
+  // $('#table').rows.invalidate().draw();
 
 }
