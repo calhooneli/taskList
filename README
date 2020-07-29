@@ -1,1 +1,2 @@
-This is a single page Task List application which stores your list to local browser storage and will retrieve it upon page load. You can both add and delete items from your list.
+This is a single page Tasklist application which stores your list to local browser storage and will retrieve it upon page load. 
+You can both add, edit, and complete (remove) items from the list. All changes are automatically saved to the local storage JSON array.
