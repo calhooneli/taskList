@@ -1,10 +1,18 @@
 // load datatables
-$(document).ready( function () {
-    $('#table').DataTable({
-      paging: false
-    });
-} );
+//$(document).ready( function () {
+//    $('#table').DataTable({
+//      paging: false
+//    });
+//} );
 
+$(document).ready(function() {
+    var table = $('#table').removeAttr('width').DataTable( {
+        paging:         false,
+        "columnDefs": [
+          { "width": "30%", "targets": 4 }
+        ],
+    } );
+} );
 
 
 // create table from localStorage

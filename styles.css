@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   color: #EFDAB9;
-  background-color: #353334;
+/*  background-color: #353334; */
 }
 input {
   margin: 0px;
@@ -29,7 +29,7 @@ img {
   background-color: #353334;
   padding: 20px;
   height: 100%;
-  width: 19%;
+  width: 20%;
   margin: 0px;
   border: 0px;
   align-items: center;
@@ -79,15 +79,10 @@ img {
 }
 .table {
   margin: 0;
-  float: left;
+  overflow: hidden;
   padding: 20px;
-  width: 75%;
   border-style: none;
   border-color: #999;
   background-color: #353334;
   height: 100%;
 }
-table.dataTable.row-border tbody th, table.dataTable.row-border tbody td {
-    border-top: 1px solid #424143; }
-table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td {
-    border-top: none; }
